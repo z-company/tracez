@@ -1,0 +1,36 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 96,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "block-spacing": "error",
+    "comma-spacing": "error",
+    "key-spacing": "error",
+    "keyword-spacing": "error",
+    "camelcase": "warn"
+  }
+}

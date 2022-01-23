@@ -1,0 +1,1 @@
+export const nTon = (a: bigint) => a as any as number;

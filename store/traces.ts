@@ -1,11 +1,9 @@
 /* eslint-disable camelcase */
-import { Trace, User } from "@prisma/client";
+import { Trace } from "@prisma/client";
 import store from "./store";
-import { QuarterMinute, Minute, Hour, Day, Month, Year } from "./units";
+import { seedDate, unitOrder } from "./units";
 
-const seedDate = 1642344797024;
 
-const unitOrder = [QuarterMinute, Minute, Hour, Day, Month, Year];
 
 const getBucket = (unit: number) =>
   ((Date.now() - seedDate) / unit) | 0;
@@ -71,3 +69,12 @@ export const getTraces = async (userId: string) => {
     }
   });
 };
+
+export const getStats = (userId: string, trace: string) =>
+  store.stats.findMany({
+    where: {
+      trace: {
+        id: trace,
+      }
+    }
+  });

@@ -1,7 +1,8 @@
 import { Flex, useColorMode } from "@chakra-ui/react";
-import { faBars, faHome, faKey, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faHome, faKey, faMoon, faSignOutAlt, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
+import { signOut } from "next-auth/react";
 import { useState } from "react";
 import create from "zustand";
 import NavItem from "./NavItem";
@@ -52,6 +53,7 @@ export default function Sidebar() {
         />
         <NavItem navSize={navSize} icon={faHome} title="Dashboard" to="/dashboard" active />
         <NavItem navSize={navSize} icon={faKey} title="App Key" to="/dashboard/key" active />
+        <NavItem navSize={navSize} icon={faSignOutAlt} title="Sign Out" to={() => signOut()} active />
       </Flex>
       <Button onClick={() => toggleColorMode()} >
         <FontAwesomeIcon icon={colorMode === "dark" ? faSun : faMoon} />

@@ -90,3 +90,13 @@ export const useFetchNewKey = () => useApi<CreateKeyResponse>({path: "key"});
 export const useTraces = createApi<TraceResponse[]>({path: "trace"}, 30*1000);
 
 export const useStats = (id: string) => useApi<Stats[]>({path: "trace/stats", data: {trace: id}});
+
+export const dismissTrace = (id: string) => {
+  if (useTraces.getState().data) {
+    useTraces.setState(s => ({
+      ...s,
+      data: s.data?.filter(d => d.id !== id) || null
+    }));
+  }
+  return callApi({ path: "trace/dismiss", data: {trace: id}});
+};

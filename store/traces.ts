@@ -78,3 +78,11 @@ export const getStats = (userId: string, trace: string) =>
       }
     }
   });
+
+export const deleteTrace = (id: string, userId: string) => 
+  store.trace.deleteMany({
+    where: {
+      id,
+      userId,
+    },
+  });
